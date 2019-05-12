@@ -30,7 +30,7 @@
         let reactWidth = Math.floor((canvasWidth / mapCol) - marginWidth);
         let reactHeight = Math.floor((canvasHeight / mapRow) -marginWidth);
        
-        let data = map(mapCol,mapRow)
+        let data = map(mapCol,mapRow);
         //创建地图
         function map(mapCol,mapRow) {
             let data = [];
@@ -47,12 +47,29 @@
        function render() {
             for(let i=0;i<data.length;i++) {
                 for(let j=0;j<data[i].length;j++) {
-                    ctx.fillStyle = '#1AE680';
+                    ctx.fillStyle = data[i][j] == 1 ? '#1AE680':'yellow'
                     ctx.fillRect(j * (reactWidth + marginWidth) + marginWidth,i* (reactHeight + marginWidth) + marginWidth,reactWidth,reactHeight)
                 }
             }
        }
+       //生成方块
+       function createRect() {
+           let num = Math.floor(Math.random() * 7)
+           let arr = [
+               [[1,1,1,1]],
+               [[1,1],[1,1]],
+               [[1,1,0],[0,1,1]],
+               [[0,0,1],[1,1,1]],
+               [[0,1,0],[1,1,1]],
+               [[1,0,0],[1,1,1]],
+               [[0,0,1],[1,1,1]]
+           ]
+           return arr[num]
+       }
 
+
+       let numRect = createRect();
+    
     </script>
 </body>
 </html>
