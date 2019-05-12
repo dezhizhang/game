@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            top: 0px;
+            margin: auto;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        let mapCol = 12;
+        let mapRow = 12
+        let canvasWidth = canvas.width;
+        let canvasHeight = canvas.height;
+        let reactWidth = (canvasWidth / mapCol) -10;
+        let reactHeight = (canvasHeight / mapRow) -10;
+       
+
+
+        let data = map(mapCol,mapRow)
+        //创建地图
+        function map(mapCol,mapRow) {
+            let data = [];
+            for(let i=0;i<mapCol;i++) {
+                data.push([])
+                for(let j=0;j<mapRow;j++) {
+                    data[i].push(j)
+                }
+            }
+            return data
+        }
+        render()
+       //渲染方块
+       function render() {
+            for(let i=0;i<data.length;i++) {
+                for(let j=0;j<data[i].length;j++) {
+                    ctx.fillStyle = 'yellow';
+                    ctx.fillRect(j * (reactWidth + 10) + 5,i* (reactHeight +10) + 5,reactWidth,reactHeight)
+                }
+            }
+       }
+
+    </script>
+</body>
+</html>
