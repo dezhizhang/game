@@ -23,14 +23,13 @@
         let canvas = document.getElementById('canvas');
         let ctx = canvas.getContext('2d');
         let mapCol = 12;
-        let mapRow = 12
+        let mapRow = 12;
+        let marginWidth = 10;
         let canvasWidth = canvas.width;
         let canvasHeight = canvas.height;
-        let reactWidth = (canvasWidth / mapCol) -10;
-        let reactHeight = (canvasHeight / mapRow) -10;
+        let reactWidth = Math.floor((canvasWidth / mapCol) - marginWidth);
+        let reactHeight = Math.floor((canvasHeight / mapRow) -marginWidth);
        
-
-
         let data = map(mapCol,mapRow)
         //创建地图
         function map(mapCol,mapRow) {
@@ -48,8 +47,8 @@
        function render() {
             for(let i=0;i<data.length;i++) {
                 for(let j=0;j<data[i].length;j++) {
-                    ctx.fillStyle = 'yellow';
-                    ctx.fillRect(j * (reactWidth + 10) + 5,i* (reactHeight +10) + 5,reactWidth,reactHeight)
+                    ctx.fillStyle = '#1AE680';
+                    ctx.fillRect(j * (reactWidth + marginWidth) + marginWidth,i* (reactHeight + marginWidth) + marginWidth,reactWidth,reactHeight)
                 }
             }
        }
