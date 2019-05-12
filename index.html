@@ -37,17 +37,28 @@
             for(let i=0;i<mapCol;i++) {
                 data.push([])
                 for(let j=0;j<mapRow;j++) {
-                    data[i].push(j)
+                    data[i].push(1)
                 }
             }
             return data
         }
-        render()
+
+        let numRect = createRect();
+       
+
+        function moveReact() {
+            for(let i=0;i<numRect.length;i++) {
+                for(let j=0;j<numRect[i].length;j++) {
+                    data[i][j] = numRect[i][j]
+                }
+            }
+        }
+   
        //渲染方块
        function render() {
             for(let i=0;i<data.length;i++) {
                 for(let j=0;j<data[i].length;j++) {
-                    ctx.fillStyle = data[i][j] == 1 ? '#1AE680':'yellow'
+                    ctx.fillStyle = data[i][j] == 0 ? '#1AE680':'yellow'
                     ctx.fillRect(j * (reactWidth + marginWidth) + marginWidth,i* (reactHeight + marginWidth) + marginWidth,reactWidth,reactHeight)
                 }
             }
@@ -67,9 +78,7 @@
            return arr[num]
        }
 
-
-       let numRect = createRect();
-    
+       render()
     </script>
 </body>
 </html>
